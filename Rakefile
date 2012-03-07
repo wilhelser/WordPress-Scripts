@@ -74,7 +74,7 @@ namespace :plugins do
           system( "rsync -avz #{local_root}/wp-content/plugins/ #{ssh_user}:#{remote_root}/wp-content/plugins/")
         end
         desc "Pull Plugins"
-        task :push do
+        task :pull do
           system( "rsync -avz #{remote_root}/wp-content/plugins/ #{ssh_user}:#{local_root}/wp-content/plugins/")
         end
 end
