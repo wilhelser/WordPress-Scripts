@@ -2,6 +2,7 @@
 ssh_user          = ""
 remote_root       = "" #path to your WordPress installation
 remote_theme       = ""  #Path to your theme directory
+remote_plugins       = "" # Path to your plugins directory 
 remote_mu       = "" # Path to your MU plugins directory if you're using it
 remote_vhost             = "" # example.com
 remote_db_user     = ""
@@ -17,8 +18,8 @@ local_db_host     = ""
 local_vhost             = ""
 local_root       = ""
 local_theme       = ""
+local_plugins       = ""
 local_mu       = ""
-local_phx       = ""
 
 
 
@@ -71,11 +72,11 @@ end
 namespace :plugins do
         desc "Push Plugins"
         task :push do
-          system( "rsync -avz #{local_root}/wp-content/plugins/ #{ssh_user}:#{remote_root}/wp-content/plugins/")
+          system( "rsync -avz #{local_plugins}/ #{ssh_user}:#{remote_plugins}/")
         end
         desc "Pull Plugins"
         task :pull do
-          system( "rsync -avz #{remote_root}/wp-content/plugins/ #{ssh_user}:#{local_root}/wp-content/plugins/")
+          system( "rsync -avz #{ssh_user}:#{remote_plugins}/ #{local_plugins}/")
         end
 end
 
